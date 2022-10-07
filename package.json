@@ -5,6 +5,12 @@
   "repository": "https://github.com/yazaldefilimonepinto/clean-arch-api-starter",
   "author": "Yazalde Filimone <yazaldefilimon@gmail.com>",
   "license": "MIT",
+  "scripts": {
+    "lint": "eslint --ignore-path .gitignore \"src/**/*.+(ts|js)\"",
+    "format": "prettier --ignore-path .gitignore \"src/**/*.+(ts|js)\" --write",
+    "postinstall": "husky install",
+    "prepare": "husky install"
+  },
   "devDependencies": {
     "@types/dotenv": "^8.2.0",
     "@types/express": "^4.17.14",
@@ -22,11 +28,25 @@
     "eslint-plugin-promise": "^6.0.0",
     "prettier": "^2.7.1",
     "ts-node-dev": "^2.0.0",
-    "typescript": "*"
+    "typescript": "*",
+    "husky": "^8.0.0"
   },
   "dependencies": {
     "dotenv": "^16.0.3",
     "express": "^4.18.1",
+    "husky": "^8.0.1",
+    "lint-staged": "^13.0.3",
     "module-alias": "^2.2.2"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "./src/**/*.{ts,js}": [
+      "eslint --ignore-path .gitignore --fix",
+      "prettier --ignore-path .gitignore --write"
+    ]
   }
 }
