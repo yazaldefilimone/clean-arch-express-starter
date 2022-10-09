@@ -15,7 +15,7 @@ const nameSchema = Joi.object({
 });
 
 const passwordSchema = Joi.object({
-  password: Joi.string().required().regex(new RegExp(passwordRegex)).min(8).max(30),
+  password: Joi.string().required().regex(new RegExp(passwordRegex)).min(6).max(30),
 });
 
 export function isValidEmail(email: string): boolean {
