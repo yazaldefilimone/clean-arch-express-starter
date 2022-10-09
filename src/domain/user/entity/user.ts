@@ -19,9 +19,11 @@ export class User {
   public static isValidEmail(email: string): Either<InvalidParamError, string> {
     return isValidEmail(email) ? right(email) : left(new InvalidParamError({ param: 'email' }));
   }
+
   public static isValidName(name: string): Either<InvalidParamError, string> {
     return isValidName(name) ? right(name) : left(new InvalidParamError({ param: 'name' }));
   }
+
   public static isValidPassword(password: string): Either<InvalidParamError, string> {
     return isValidPassword(password) ? right(password) : left(new InvalidParamError({ param: 'password' }));
   }
