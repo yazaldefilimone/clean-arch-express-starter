@@ -32,7 +32,7 @@ export class User {
     const userValidate = {
       email: this.isValidEmail(user.email),
       name: this.isValidName(user.name),
-      password: this.isValidName(user.password),
+      password: this.isValidPassword(user.password),
     };
 
     if (userValidate.email.isLeft()) {
