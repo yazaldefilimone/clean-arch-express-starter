@@ -1,9 +1,9 @@
 import Joi from 'joi';
 
 // email validator
+
 const emailRegex =
   /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-
 // password not contain space
 const passwordRegex = /^[a-zA-Z0-9!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]{8,30}$/;
 
@@ -15,23 +15,23 @@ const nameSchema = Joi.object({
 });
 
 const passwordSchema = Joi.object({
-  password: Joi.string().required().regex(new RegExp(passwordRegex)).min(6).max(30),
+  password: Joi.string().required().regex(new RegExp(passwordRegex)).min(8).max(30),
 });
 
 export function isValidEmail(email: string): boolean {
   if (!email) return false;
   const result = emailSchema.validate({ email });
-  return !result.error;
+  return result.error ? false : true;
 }
 
 export function isValidName(name: string): boolean {
   if (!name) return false;
   const result = nameSchema.validate({ name });
-  return !result.error;
+  return result.error ? false : true;
 }
 
 export function isValidPassword(password: string): boolean {
   if (!password) return false;
   const result = passwordSchema.validate({ password });
-  return !result.error;
+  return result.error ? false : true;
 }
