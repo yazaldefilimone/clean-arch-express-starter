@@ -34,4 +34,16 @@ describe('User', () => {
     expect(build.isRight()).toBe(false);
     expect(build.value).toEqual(new InvalidParamError({ param: 'email' }));
   });
+  it('Should return InvalidParam password if User not receive correct password', () => {
+    const { sut, memoryPayload } = makeSut();
+    memoryPayload.password = '2';
+
+    const build = sut.build({
+      ...memoryPayload,
+      password: '24',
+    });
+    expect(build.isLeft()).toBe(true);
+    expect(build.isRight()).toBe(false);
+    // expect(build.value).toEqual(new InvalidParamError({ param: 'psassword' }));
+  });
 });
