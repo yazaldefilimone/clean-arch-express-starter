@@ -44,6 +44,6 @@ describe('User', () => {
     });
     expect(build.isLeft()).toBe(true);
     expect(build.isRight()).toBe(false);
-    // expect(build.value).toEqual(new InvalidParamError({ param: 'psassword' }));
+    expect(build.value).toEqual(new InvalidParamError({ param: 'password' }));
   });
 });
