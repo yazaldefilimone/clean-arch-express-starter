@@ -45,4 +45,19 @@ describe('User', () => {
     expect(build.isRight()).toBe(false);
     expect(build.value).toEqual(new InvalidParamError({ param: 'password' }));
   });
+
+  it('Should return User if User receive correct data', () => {
+    const { sut, memoryPayload } = makeSut();
+
+    const build: any = sut.build({
+      ...memoryPayload,
+    });
+    expect(build.isLeft()).toBe(false);
+    expect(build.isRight()).toBe(true);
+    expect(build.value).toHaveProperty('id');
+    expect(build.value).toHaveProperty('createdAt');
+    expect(build.value.name).toBe(memoryPayload.name);
+    expect(build.value.email).toBe(memoryPayload.email);
+    expect(build.value.password).toBe(memoryPayload.password);
+  });
 });
