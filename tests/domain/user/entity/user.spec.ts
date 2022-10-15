@@ -36,7 +36,6 @@ describe('User', () => {
   });
   it('Should return InvalidParam password if User not receive correct password', () => {
     const { sut, memoryPayload } = makeSut();
-    memoryPayload.password = '2';
 
     const build = sut.build({
       ...memoryPayload,
