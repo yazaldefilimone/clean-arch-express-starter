@@ -1,4 +1,4 @@
-import { userLoginType, userStoreType } from '~/domain/user/dtos';
+import { userStoreType } from '~/domain/user/dtos';
 
 export interface IUserRepository {
   sign: (data: userStoreType) => Promise<{ id: string }>;
