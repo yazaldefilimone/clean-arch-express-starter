@@ -16,7 +16,7 @@ export class SignUserUseCase implements ISignUserUseCase {
     if (building.isLeft()) return left(building.value);
     const user = building.value;
 
-    const userExists = this.userRepository.getEmail({ email: user.email });
+    const userExists = await this.userRepository.getEmail({ email: user.email });
     if (userExists) {
       return left(new AlreadyExistsError({ param: 'user' }));
     }
