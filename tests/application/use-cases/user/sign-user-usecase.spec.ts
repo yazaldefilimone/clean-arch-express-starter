@@ -30,4 +30,14 @@ describe('SignUserUseCase', () => {
     expect(response.isRight()).toBe(false);
     expect(response.value).toEqual(new AlreadyExistsError({ param: 'user' }));
   });
+
+  it('Should be call  getEmailCalls, signCalls with 1 number when pass user data', async () => {
+    const { sut, userRepository, fakePayload } = makeSut();
+    const response = await sut.perform(fakePayload);
+    expect(userRepository.getEmailCalls).toBe(1);
+    expect(userRepository.signCalls).toBe(1);
+    expect(response.isLeft()).toBe(false);
+    expect(response.isRight()).toBe(true);
+    expect(response.value).toHaveProperty('id');
+  });
 });
