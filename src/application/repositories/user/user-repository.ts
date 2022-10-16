@@ -1,6 +1,8 @@
+import { userLoginType, userStoreType } from '~/domain/user/dtos';
+
 export interface IUserRepository {
-  sign: () => void;
-  login: () => void;
-  getId: () => void;
-  getAll: () => void;
+  sign: (data: userStoreType) => Promise<{ id: string }>;
+  getId: ({ id }: { id: string }) => Promise<userStoreType | null>;
+  getEmail: ({ email }: { email: string }) => Promise<userStoreType | null>;
+  getAll: () => Promise<userStoreType[]>;
 }
