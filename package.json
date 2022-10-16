@@ -30,7 +30,7 @@
     "build": "npm run clean && tsc -p tsconfig-build.json",
     "prepare": "husky install",
     "lint": "tslint -p tsconfig.json",
-    "test": "vitest run",
+    "test": "vitest run --passWithNoTests",
     "test:watch": "vitest",
     "test:coverage": "vitest run --coverage"
   },
